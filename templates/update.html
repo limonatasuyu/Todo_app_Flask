@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {# For specifiying the template html for inheritance #}
+
+{% block head %} {# beginning of the header tag #}
+<title>Task Master</title>
+{% endblock %} {# end of the header tag #}
+
+{% block body %} {# beginning of the body tag #}
+<!--A div tag for all of the content in webpage, class name is content for easier styling -->
+<div class="content">
+	<!-- A centered h1 tag for title -->
+	<h1 style="text-align: center;"> Update Task </h1>
+	
+	<!-- A div tag for styling more easily the form container and elements in it -->
+	<div class="form">
+	<!-- Creating form container for input elements that is gonna take information from user -->
+	<!-- method="POST" is for sending data (for changing the value) to localhost server -->
+	<form action="/update/{{task.id}}" method="POST">
+		<!-- Text that is gonna sending to web server -->
+		<!-- name="content" is for reference data after submitted -->
+		{# {{task.content}} is the tasks content that is sent from the database and the value="{{task.content}}" is for typing the content string in text bar #}
+		<input type="text" name="content" id="content" value="{{task.content}}">
+		<!-- Submit button for sending to changed data to server -->
+		<input type="submit" value="Update">
+	</div>
+</div>
+{% endblock %} {# end of the body tag #}
