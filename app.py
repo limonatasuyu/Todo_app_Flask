@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os.path import exists
+import git
 
 
 app = Flask(__name__) # Setting up the application
