@@ -13,6 +13,15 @@ app = Flask(__name__) # Setting up the application
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # Setting up the database and route of the file that is gonna store the data, file's name is gonna be test.db
 db = SQLAlchemy(app) # Creating database with binding SQLAlchemy class to our app
 
+#Route for the GitHub webhook
+@app.route('/git_update', methods=['POST'])
+def git_update():
+  repo = git.Repo('./orbe')
+  origin = repo.remotes.origin
+  repo.create_head('main', 
+  origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+  origin.pull()
+  return '', 200
 
 # Creating database model with Model instance in SQLAlchemy class
 class Todo(db.Model): 
