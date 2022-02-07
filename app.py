@@ -19,7 +19,7 @@ db = SQLAlchemy(app) # Creating database with binding SQLAlchemy class to our ap
 def webhook():
 	repo = git.Repo('./Todo_app_Flask')
 	origin = repo.remotes.origin
-	repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+	#repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
 	origin.pull()
 	return '', 200
 
