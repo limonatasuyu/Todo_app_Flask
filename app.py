@@ -16,7 +16,7 @@ db = SQLAlchemy(app) # Creating database with binding SQLAlchemy class to our ap
 
 #Route for the GitHub webhook
 @app.route('/update_server', methods=['POST'])
-    def webhook():
+def webhook():
 	if request.method == 'POST':
 		repo = git.Repo('./Todo_app_Flask')
 		origin = repo.remotes.origin
