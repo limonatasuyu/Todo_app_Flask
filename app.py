@@ -16,13 +16,12 @@ db = SQLAlchemy(app) # Creating database with binding SQLAlchemy class to our ap
 
 #Route for the GitHub webhook
 @app.route('/git_update', methods=['POST'])
-def git_update():
-  repo = git.Repo('./orbe')
-  origin = repo.remotes.origin
-  repo.create_head('main', 
-  origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
-  origin.pull()
-  return '', 200
+def webhook():
+	repo = git.Repo('./Todo_app_Flask')
+	origin = repo.remotes.origin
+	repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+	origin.pull()
+	return '', 200
 
 # Creating database model with Model instance in SQLAlchemy class
 class Todo(db.Model): 
