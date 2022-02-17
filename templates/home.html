@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {# For specifiying the template html for inheritance #}
+
+{% block head %} {# beginning of the header tag #}
+<title>Task Master</title>
+{% endblock %} {# end of the header tag #}
+
+{% block body %} {# beginning of the body tag #}
+<!--A div tag for all of the content in webpage, class name is content for easier styling -->
+<div class="content">
+	<!-- A centered h1 tag for title -->
+	<h1 style="text-align: center;"> TASK MASTER </h1>
+	<h3>User: {{username}}</h3>
+	{% if tasks|length < 1 %}
+	<!-- A centered h4 tag in case of not a single task is created -->
+	<h4 style="text-align: center;">There are no task, create one below</h4>
+	{% endif %}
+	<!-- Table tag for sgowing user taks organized-->
+	<table>
+		<!-- A row of table -->
+		<tr>
+			<!-- <th> tags for specifying data's type to the user -->
+			<th>Task</th>
+			<th>Added</th>
+			<th>Action</th>
+		</tr>
+		<!-- Rows for each task and datas to show for each row -->
+		{% for task in tasks %} {# For each task in database there is gonna be new row and data to show the user #}
+		<tr>
+			<td>{{ task.content }}</td> {# task.content is task content in the database #}
+			<td>{{ task.date_created.date() }}</td> {# task.date_created.date() is that specific data's creation time in the database #}
+			<td>
+				<!-- Anchor tags for deleting and updating the data -->
+				<a href="/home/delete/{{task.id}}">Delete</a>
+				<br>
+				<a href="/home/update/{{task.id}}">Update</a>
+			</td>	
+		{% endfor %} {# End of for loop #}
+	</table>
+	
+	<!-- Creating form container for input elements that is gonna take information from user -->
+	<!-- action="/" is for staying in the same page(index page) when the user submits the "Add Task" button below -->
+	<!-- method="POST" is for sending data (the task's name) to localhost server -->
+	<form action="/home" method="POST">
+		<!-- Text that is gonna sending to web server, name="content" is for reference data after submitted -->
+		<!-- id="content" is for styling the input text bar -->
+		<input type="text" name="content" id="content">
+		<!-- Submit button for sending the data as "content" -->
+		<input type="submit" value="Add Task">
+		<a href="/" class="loginlink">Go Back To Login Page</a>
+</div>
+
+{% endblock %} {# end of the body tag #}

@@ -9,12 +9,12 @@
 <div class="content">
 	<!-- A centered h1 tag for title -->
 	<h1 style="text-align: center;"> UPDATE TASK </h1>
-	
+	<h3>User: {{username}}</h3>
 	<!-- A div tag for styling more easily the form container and elements in it -->
 	<div class="form">
 	<!-- Creating form container for input elements that is gonna take information from user -->
 	<!-- method="POST" is for sending data (for changing the value) to localhost server -->
-	<form action="/update/{{task.id}}" method="POST">
+	<form action="/home/update/{{task.id}}" method="POST">
 		<!-- Text that is gonna sending to web server -->
 		<!-- name="content" is for reference data after submitted -->
 		{# {{task.content}} is the tasks content that is sent from the database and the value="{{task.content}}" is for typing the content string in text bar #}
