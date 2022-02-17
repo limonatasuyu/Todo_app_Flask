@@ -64,9 +64,9 @@ def webhook():
 		
 @app.route('/', methods=['POST', 'GET'])
 def index():
-
+	return "debug 1"
 	if request.method == 'POST':
-		
+		return "debug 2"
 		global user_name 						## Creating global user_name variable  
 		user_name = request.form['name']		## giving value to user_name variable   ## This two code is gonna be executed when variable calls
 		if Users.query.filter_by(name=user_name).first() == None:
