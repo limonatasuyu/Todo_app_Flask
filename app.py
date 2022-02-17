@@ -62,7 +62,7 @@ def webhook():
 		return 'Wrong event type', 400
 		
 		
-@app.route('/', methods=["POST", "GET"])
+@app.route('/', methods=['POST', 'GET'])
 def index():
 	
 	if request.method == 'POST':
@@ -87,7 +87,7 @@ def index():
 
 # Creating index's route, '/home' is for creating page's url
 ''' TO-DO: write the comment for methods'''
-@app.route('/home', methods = ["POST", "GET"])
+@app.route('/home', methods = ['POST', 'GET'])
 def home(): # Function for creating tasks page
 	
 	
@@ -130,11 +130,9 @@ def delete(id): # Function for deleting data from databse, the id argument is fo
 # Creating update page's route for updating the tasks name (or data's content key's string value)
 # The <int:id> is actually the data's id in the database and is needed for function to take as an argument
 ''' TO-DO: write the comment for methods '''
-@app.route('/home/update/<int:id>', methods = ["GET", "POST"])
+@app.route('/home/update/<int:id>', methods = ['GET', 'POST'])
 def update(id):# Function for updating the data in database
-	print("debug 1")
 	task = Tasks.query.get_or_404(id) # Creating a variable for data to update in order to defining while using it
-	print("debug 2")
 	if request.method == 'POST': # If the request that send to this route is POST
 		print("debug 3")
 		# Changing task's content to new content
@@ -148,7 +146,6 @@ def update(id):# Function for updating the data in database
 			return 'There is an error(Updating error)' #  If there is something wrong user gonna go to a page saying 'There is an error(Updating error)'
 			
 	else: # If the request that send to this route is not POST
-		print("debug 5")
 		return render_template('update.html', task=task, username=user_name) # Then return user to update.html, task=task is  for explaning 'task in html file is the task variable'
 
 if __name__ == "__main__":
