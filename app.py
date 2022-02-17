@@ -153,4 +153,4 @@ def update(id):# Function for updating the data in database
 		return render_template('update.html', task=task, username=user_name) # Then return user to update.html, task=task is  for explaning 'task in html file is the task variable'
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=False)
