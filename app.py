@@ -51,7 +51,7 @@ if not database_exists_T:
 
 
 # Route for the GitHub webhook
-@app.route('/update_server', methods=['POST'])
+@app.route('/update_server', methods=["POST"])
 def webhook():
 	if request.method == 'POST':
 		repo = git.Repo('./Todo_app_Flask')
@@ -62,7 +62,7 @@ def webhook():
 		return 'Wrong event type', 400
 		
 		
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=["POST", "GET"])
 def index():
 	return "debug 1"
 	if request.method == 'POST':
@@ -88,7 +88,7 @@ def index():
 
 # Creating index's route, '/home' is for creating page's url
 ''' TO-DO: write the comment for methods'''
-@app.route('/home', methods = ['POST', 'GET'])
+@app.route('/home', methods = ["POST", "GET"])
 def home(): # Function for creating tasks page
 	
 	
@@ -131,7 +131,7 @@ def delete(id): # Function for deleting data from databse, the id argument is fo
 # Creating update page's route for updating the tasks name (or data's content key's string value)
 # The <int:id> is actually the data's id in the database and is needed for function to take as an argument
 ''' TO-DO: write the comment for methods '''
-@app.route('/home/update/<int:id>', methods = ['GET', 'POST'])
+@app.route('/home/update/<int:id>', methods = ["GET", "POST"])
 def update(id):# Function for updating the data in database
 	print("debug 1")
 	task = Tasks.query.get_or_404(id) # Creating a variable for data to update in order to defining while using it
