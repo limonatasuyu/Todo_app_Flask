@@ -1,3 +1,3 @@
-This is a simple todo app written with flask,
+Simple todo app written with Flask. When page opened user needs to login with the username to see and edit todo items belongs to that username in database. I used Flask-SQLAlchemy for creating and e    diting the database. The database is relational and the there are two tables named Users and Tasks, each Task in Tasks has a foreign key that is pointing one of the user in Users table. So when the user logs in to the app, Flask-SQLAlc    hemy first looks into the Users table to see if the username exists, if not creates a user with the given username, then looks into Tasks table to see a task that has a foreign key that points to that particular user, if there is shows     them. Finally when user creates a task, SQLAlchemy creates a task that has foreign key that points to the given username.
 
 There you can see the app: http://limonyerinelimon.pythonanywhere.com/
